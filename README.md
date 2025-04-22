@@ -1,6 +1,7 @@
 [# -Product-Review-Sentiment-Analysis
 
-# 💬 Sentiment Analysis System – CProduct-Review-Analysis
+# 💬 Sentiment Analysis System – Sentiment Analysis for Product-Review
+
 
 Objective: Analyze Product reviews and classify them as positive or negative.
 I have download dataset from Kaggle <br>
@@ -15,7 +16,7 @@ I have download dataset from Kaggle <br>
 2. Applied Bag of Words (BoW) and TF-IDF vectorization to convert text into meaningful numerical feature vectors.
 
 # 🤖 Model Training:
-1. Trained various ML models including Logistic Regression, Naive Bayes, and SVM for sentiment prediction.
+1. Trained various ML models including Logistic Regression, Deep Learning ( RNN and LSTM but need model training on a GPU for faster computation)
 
 2. Compared model performance using metrics such as Accuracy, Precision, Recall, and F1-score.
 
@@ -25,8 +26,10 @@ I have download dataset from Kaggle <br>
 2. Demonstrated effectiveness of feature engineering and preprocessing in improving model performance.
 
 # 🤖 Skills: 
-Python EDA , Stastics ,Data Cleaning and Preprocessing,  Supervised Learning , Product Review Sentiment Analysis , Model Building , Future engineer , Sentiment Analysis ,NLP , Predictive Modeling, Kaggle 
+Python EDA , Stastics ,Data Cleaning and Preprocessing,  Supervised Learning , Product Review Sentiment Analysis , Model Building , Future engineer , Sentiment Analysis ,NLP , Predictive Modeling, Kaggle  , Deep Learning ( RNN and LSTM )
 
+# 🛠️ Tools & Technologies: 
+Python, NLTK, Scikit-learn, TensorFlow, Keras, Pandas, NumPy, Matplotlib, Seaborn, Flask, Jupyter Notebook
 
 
 # Created Environment Variables & activate:-
