@@ -1,8 +1,8 @@
-# -Customer-Review-Classification
+# -Product-Review-Sentiment-Analysis
 
-# 💬 Sentiment Analysis System – Customer Review Classification
+# 💬 Sentiment Analysis System – CProduct-Review-Analysis
 
-Objective: Analyze customer reviews and classify them as positive or negative.
+Objective: Analyze Product reviews and classify them as positive or negative.
 I have download dataset from Kaggle <br>
 🧹 Data Preprocessing:
 1. Removed white spaces, punctuation, and stop words to clean and normalize textual data. 
