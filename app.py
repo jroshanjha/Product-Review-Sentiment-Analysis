@@ -20,15 +20,15 @@ import nltk_setup
 # nltk.download('punkt_tab')
 # stop_words = set(stopwords.words('english'))
 
-nltk.data.path.append("/home/appuser/nltk_data")
+# nltk.data.path.append("/home/appuser/nltk_data")
 
 # ✅ 1. Load the vectorizer
-with open('models/vectorizer.pkl', 'rb') as file:
-    vectorizer = pickle.load(file)
+with open('models/vec.pkl', 'rb') as file:
+    vect = pickle.load(file)
 
 # ✅ 2. Load the trained model
-with open('models/model.pkl', 'rb') as file:
-    model = pickle.load(file)
+with open('models/ml.pkl', 'rb') as file:
+    ml = pickle.load(file)
 
 
 # Applications 
@@ -57,42 +57,23 @@ def preprocess(text):
 
 # 🔍 Reusable function for prediction
 def predict_sentiment(text):
-    X_new = vectorizer.transform([text])
+    X_new = vect.transform([text])
 
     try:
         X_new = X_new.toarray()  # For models that need dense
     except:
         pass
 
-    prediction = model.predict(X_new)[0]
+    prediction = ml.predict(X_new)[0]
     # Predict probability
     try:
-        probs = model.predict_proba(X_new)
+        probs = ml.predict_proba(X_new)
         confidence = round(probs[0][1] * 100, 2) if prediction == 1 else round(probs[0][0] * 100, 2)
     except:
         confidence = None  # some models like SVC with no `probability=True` won't support this
         
     label = "Positive" if prediction == 1 else "Negative"
     return label , confidence
-
-def predict_sentiment1(text):
-    
-    # Optional: Preprocess if needed (e.g., lowercase, remove stopwords)
-    # text = preprocess(input_text)
-    
-    # Step 1: Vectorize
-    X_new = vectorizer.transform([text])
-
-    # Step 2: Convert to dense if needed
-    try:
-        X_new = X_new.toarray()
-    except:
-        pass  # For MultinomialNB and others that accept sparse
-
-    # Step 3: Predict
-    prediction = model.predict(X_new)[0]
-    label = "Positive" if prediction == 1 else "Negative"
-    return label
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -125,33 +106,7 @@ def api_predict():
     # if not text:
     #     return jsonify({"error": "No review provided"}), 400
 
-# @app.route('/api/predict', methods=['POST'])
-# def api_predict():
-#     data = request.get_json()
 
-#     if not data or 'text' not in data:
-#         return jsonify({'error': 'Missing "text" in request'}), 400
-
-#     input_text = data['text']
-
-#     # Optional: Preprocess if needed (e.g., lowercase, remove stopwords)
-#     # text = preprocess(input_text)
-#     text = input_text
-
-#     # Step 1: Vectorize
-#     X_new = vectorizer.transform([text])
-
-#     # Step 2: Convert to dense if needed
-#     try:
-#         X_new = X_new.toarray()
-#     except:
-#         pass  # For MultinomialNB and others that accept sparse
-
-#     # Step 3: Predict
-#     prediction = model.predict(X_new)[0]
-#     label = "Positive" if prediction == 1 else "Negative"
-
-#     return jsonify({"review": input_text, "prediction": label})
 
 if __name__ =='__main__':
     #logging.info("Running the main function.")

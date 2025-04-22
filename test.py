@@ -18,11 +18,11 @@ nltk.download('punkt', quiet=True)
 nltk.download('stopwords', quiet=True)
 
 # Load vectorizer & model
-with open('models/vectorizer.pkl', 'rb') as file:
-    vectorizer = pickle.load(file)
+with open('models/vec.pkl', 'rb') as file:
+    vect = pickle.load(file)
 
-with open('models/model.pkl', 'rb') as file:
-    model = pickle.load(file)
+with open('models/ml.pkl', 'rb') as file:
+    ml = pickle.load(file)
 
 # Preprocessing
 def preprocess(text):
@@ -39,16 +39,16 @@ def preprocess(text):
 
 # Prediction logic
 def predict_sentiment(text):
-    X_new = vectorizer.transform([text])
+    X_new = vect.transform([text])
     try:
         X_new = X_new.toarray()
     except:
         pass
 
-    prediction = model.predict(X_new)[0]
+    prediction = ml.predict(X_new)[0]
 
     try:
-        probs = model.predict_proba(X_new)
+        probs = ml.predict_proba(X_new)
         confidence = round(probs[0][1] * 100, 2) if prediction == 1 else round(probs[0][0] * 100, 2)
     except:
         confidence = None
@@ -57,8 +57,8 @@ def predict_sentiment(text):
     return label, confidence
 
 # Streamlit UI
-st.set_page_config(page_title="Customer Review Classifier", layout="centered")
-st.title("🧠 Customer Review Sentiment Classifier")
+st.set_page_config(page_title="Product Review Analysis", layout="centered")
+st.title("🧠 Product Review Sentiment Analysis")
 
 st.markdown("Enter a review below and we'll classify it as **Positive** or **Negative**.")
 
