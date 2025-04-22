@@ -1,0 +1,21 @@
+# flask
+# scikit-learn
+# gunicorn
+# numpy
+# pandas
+# seaborn 
+# matplotlib
+# joblib==1.3.0
+# nltk
+# streamlit
+
+flask
+nltk
+streamlit
+scikit-learn
+gunicorn
+pandas
+matplotlib
+seaborn
+joblib
+# ✅ Don't include 'punkt' or any NLTK resources here
